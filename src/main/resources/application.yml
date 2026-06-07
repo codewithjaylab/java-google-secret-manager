@@ -1,0 +1,62 @@
+# =============================================================================
+# Configuración del Módulo Google Secret Manager
+# =============================================================================
+# La propiedad 'secret-manager.source' determina qué implementación de
+# SecretProvider se inyecta (Patrón Factory):
+#
+#   source: local   → LocalSecretProvider   — lee de application.yml (dev/test)
+#   source: gsm     → GcpSecretProvider     — llama a GSM real (producción)
+#
+# Autenticación con GCP: Application Default Credentials (ADC).
+# En Windows, ejecutar: gcloud auth application-default login
+# =============================================================================
+
+secret-manager:
+  # Cambiar a "gsm" para conectar con Google Secret Manager real
+  source: gsm
+
+  # Lista de secretos que la aplicación necesita
+  secrets:
+    - DB_PASSWORD
+    - API_KEY_EXTERNA
+    - JWT_SECRET
+    - ai-api-key
+
+  # --- Solo aplican cuando source=gsm ---
+  project-id: brave-monitor-498704-c0
+  cache-ttl-seconds: 300        # 5 minutos
+  fail-on-missing: true          # Fail-fast: falla al inicio si falta un secreto
+
+# =============================================================================
+# Secretos locales (solo para desarrollo)
+# =============================================================================
+# Cuando secret-manager.source=local, los valores se leen desde aquí.
+# NUNCA incluir este archivo en el repositorio de producción.
+
+secrets:
+  DB_PASSWORD: local-dev-password-123
+  API_KEY_EXTERNA: sk-loc...-abc
+  JWT_SECRET: local-jwt-secret-no-usar-en-prod
+  ai-api-key: placeholder-local-dev-key
+
+# =============================================================================
+# Spring Boot
+# =============================================================================
+spring:
+  application:
+    name: google-secret-manager
+
+server:
+  port: 8080
+
+# =============================================================================
+# Actuator — health check
+# =============================================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

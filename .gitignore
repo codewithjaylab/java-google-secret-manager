@@ -1,0 +1,22 @@
+# java-google-secret-manager
+
+build/
+.gradle/
+*.jar
+*.war
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secretos
+src/main/resources/application-secrets.yml

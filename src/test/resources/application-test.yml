@@ -1,0 +1,12 @@
+# Perfil de test — usa LocalSecretProvider con secretos precargados
+# para verificar la integración del contexto Spring.
+
+secret-manager:
+  source: local
+  secrets:
+    - DB_PASSWORD
+    - API_KEY_EXTERNA
+
+secrets:
+  DB_PASSWORD: test-pass
+  API_KEY_EXTERNA: test-api-key
