@@ -4,6 +4,8 @@
 [![Java](https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk)](https://adoptium.net/)
 [![Google Cloud](https://img.shields.io/badge/Google%20Secret%20Manager-4285F4?logo=googlecloud)](https://cloud.google.com/secret-manager)
 [![Build: Maven](https://img.shields.io/badge/build-Maven-C71A36?logo=apachemaven)](https://maven.apache.org/)
+[![CI](https://github.com/codewithjaylab/java-google-secret-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/codewithjaylab/java-google-secret-manager/actions/workflows/ci.yml)
+[![GitHub](https://img.shields.io/badge/repo-codewithjaylab/java--google--secret--manager-181717?logo=github)](https://github.com/codewithjaylab/java-google-secret-manager)
 
 Modulo Spring Boot que integra **Google Secret Manager (GSM)** mediante un patron **Factory**, permitiendo alternar entre secretos locales (desarrollo) y secretos reales de GCP (produccion) con solo cambiar una propiedad de configuracion.
 
